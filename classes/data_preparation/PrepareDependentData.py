@@ -3,6 +3,35 @@ import os
 import numpy as np
 import statsmodels.api as sm
 from pathlib import Path
+import os
+
+
+
+
+def fetch_data(data_folder, output_folder, gdp_files, msci_file, inflation_file, tbill_file):
+    try:
+        # Check if the data folder and output folder exist
+        if not os.path.exists(data_folder):
+            raise FileNotFoundError(f"Data folder does not exist: {data_folder}")
+        if not os.path.exists(output_folder):
+            raise FileNotFoundError(f"Output folder does not exist: {output_folder}")
+
+        # Check if the specified files exist within the data folder
+        for file in gdp_files:
+            file_path = os.path.join(data_folder, file)
+            if not os.path.exists(file_path):
+                raise FileNotFoundError(f"File does not exist: {file_path}")
+        
+        for file in [msci_file, inflation_file, tbill_file]:
+            file_path = os.path.join(data_folder, file)
+            if not os.path.exists(file_path):
+                raise FileNotFoundError(f"File does not exist: {file_path}")
+
+    except FileNotFoundError as e:
+        raise Exception(f"File not found: {e}")
+    except Exception as e:
+        raise Exception(f"An error occurred: {e}")
+    
 
 
 class PrepareDepedendentData:

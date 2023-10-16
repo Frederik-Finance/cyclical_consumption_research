@@ -270,8 +270,6 @@ class RegressionAnalysis:
         self.msci_regression_long_period_df.to_csv(output_path_long)
 
 
-
-
     def run_regressions(self, cyclical_consumption_col, return_col, recession_col):
         simple_regressions = SimplePredictiveRegression(self.msci_regression_df)
         simple_results, simple_models, simple_epsilon_hat = simple_regressions.return_predictive_regression(self.h_values, cyclical_consumption_col, return_col)

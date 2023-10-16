@@ -7,6 +7,9 @@ import statsmodels.api as sm
 from scipy import stats
 from matplotlib.ticker import MaxNLocator
 
+
+
+
 # Class to prepare the data
 class PrepareIndependentData:
     def __init__(self, weighted_returns_file, consumption_data_file):
@@ -45,6 +48,8 @@ class PrepareIndependentData:
         data[['date', 'cyclical_consumption']].to_csv('./data/out/cc.csv', index=False)
 
         return data['cyclical_consumption'], pd.to_datetime(data.date)
+
+
 
 # Method to plot the cyclical consumption
 def plot_cyclical_consumption(residuals, dates):
